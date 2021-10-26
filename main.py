@@ -23,3 +23,5 @@ x = Flervalgspørsmål(spørsmåltekst, svarAlternativ, riktigSvar)
 print(str(x))
 brukerSvar = int(input("Hvilket svaralternativ er riktig?: "))
 x.sjekk_svar(brukerSvar)
+
+lucas = "123"
