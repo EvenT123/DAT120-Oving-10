@@ -1,27 +1,13 @@
-class Flervalgspørsmål:
-    def __init__(self, spørsmåltekst, svaralternativ, riktigSvar):
-        self.x = spørsmåltekst
-        self.y = svaralternativ
-        self.z = riktigSvar
-
-    def __str__(self):
-        return f"{self.x} \n1: {self.y[0]} \n2: {self.y[1]} \n3: {self.y[2]}"
-
-    def sjekk_svar(self, svar):
-        self.f = svar
-        if self.f == riktigSvar + 1:
-            print("Korrekt!")
-        else:
-            print("Feil!")
-
-
-spørsmåltekst = "Hvilke to farger er det svenske flagget?"
-svarAlternativ = ["Blå og gul", "Svart og hvit", "Rosa og sølv"]
-riktigSvar = 0
-
-x = Flervalgspørsmål(spørsmåltekst, svarAlternativ, riktigSvar)
-print(str(x))
-brukerSvar = int(input("Hvilket svaralternativ er riktig?: "))
-x.sjekk_svar(brukerSvar)
-
-lucas = "123"
+ordliste = dict() #Oppretter et dictionary
+linjenummer = 0 #Teller for linjenummer
+with open("oving_1_rein_tekst.txt") as fil1: #Åpner filen som fil1
+    for linje in fil1: #For hver linje i tekstfilen
+        linjenummer += 1 #Definerer hvilken linje som blir lest
+        ordene = linje.split() #Deler opp linjene til enkeltord
+        for ordet in ordene: #For hvert ord i listen med ord
+            ordet = ordet.lower() #Endrer ordene slik at de består av bare små bokstaver
+            if ordet not in ordliste: #Hvis ordet ikke allerede er i ordlisten
+                ordliste[ordet] = linjenummer #Legger ordet til i ordlisten med value linjenummer     
+    
+    for ordet in ordliste: #For hvert ord i dictionaryet
+        print(f"Ordet {ordet} forekommer først i linje {ordliste[ordet]}.") #Skriver ut ordene og linjenumrene
