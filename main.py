@@ -1,13 +1,32 @@
-ordliste = dict() #Oppretter et dictionary
-linjenummer = 0 #Teller for linjenummer
-with open("oving_1_rein_tekst.txt") as fil1: #Åpner filen som fil1
-    for linje in fil1: #For hver linje i tekstfilen
-        linjenummer += 1 #Definerer hvilken linje som blir lest
-        ordene = linje.split() #Deler opp linjene til enkeltord
-        for ordet in ordene: #For hvert ord i listen med ord
-            ordet = ordet.lower() #Endrer ordene slik at de består av bare små bokstaver
-            if ordet not in ordliste: #Hvis ordet ikke allerede er i ordlisten
-                ordliste[ordet] = linjenummer #Legger ordet til i ordlisten med value linjenummer     
+class Sporsmaal: #Oppretter klassen flervalgspørsmål
+    def __init__(self, sporsmaaltekst, svaralternativ, riktigSvar):
+        self.x = sporsmaaltekst #Spørsmålteksten
+        self.y = svaralternativ #Det riktige svaret
+        self.z = riktigSvar #Svaralternativene
+        
+
+    def __str__(self): #__str__ metode som returnerer en streng
+        return f"{self.x} {self.y} {self.z}" #Skriver ut spørsmålstekst og svaralternativ
     
-    for ordet in ordliste: #For hvert ord i dictionaryet
-        print(f"Ordet {ordet} forekommer først i linje {ordliste[ordet]}.") #Skriver ut ordene og linjenumrene
+    def korrekt_svar_tekst(self):
+        
+        
+        return
+
+liste = []
+with open("sporsmaalsfil.txt", "r", encoding="UTF8") as fil1:
+    for linje in fil1:
+        spmEnd = linje.find(":")
+        spm = linje[:spmEnd]
+        
+        rsStart = spmEnd + 2
+        rsEnd = linje.find(":", rsStart)
+        rs = int(linje[rsStart:rsEnd])
+        
+        saStart = linje.find(":", rsEnd) + 1
+        sa = linje[saStart:]
+        
+        x = Sporsmaal(spm, rs, sa)
+        liste.append(str(x))
+
+print(liste)
