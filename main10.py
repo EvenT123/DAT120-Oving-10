@@ -23,10 +23,10 @@ class Spiller: #Oppretter klassen spiller
         self.x = navn 
         self.y = poengsum
 
-liste = []
 saListe = []
-spiller1Poeng = 0
-spiller2Poeng = 0
+spillerListe = []
+spillerPoeng = []
+runOnce = 0
 with open("sporsmaalsfil.txt", "r", encoding="UTF8") as fil1:
     for linje in fil1:
         spmEnd = linje.find(":")
@@ -52,21 +52,32 @@ with open("sporsmaalsfil.txt", "r", encoding="UTF8") as fil1:
         x = Sporsmaal(spm, sa, rs)
         
         if __name__=="__main__":
-            print(str(x))
-            spiller1Svar = int(input("Velg et svaralternativ for spiller 1: "))
-            spiller2Svar = int(input("Velg et svaralternativ for spiller 2: "))
-            print(x.korrekt_svar_tekst())
+            while runOnce == 0:
+                antallSpillere = int(input("Skriv inn antall spillere: "))
+                teller = 1
+                for spillere in range(antallSpillere):
+                    spillerListe.append(input(f"Navnet til spiller {teller}: "))
+                    spillerPoeng.append(0)
+                    teller += 1
+                runOnce = 1
             
-            if spiller1Svar == rs:
-                spiller1Poeng += 1
-                print("\nSpiller 1: Korrekt")
-            else:
-                print("\nSpiller 1: Feil")
+            print(str(x))
+            
+            teller = 0
+            tilbakemelding = ""
+            for spillere in range(antallSpillere):
+                svar = int(input(f"Velg et svaralternativ for spiller {spillerListe[teller]}: "))
+                if svar == rs:
+                    spillerPoeng[teller] += 1
+                    tilbakemelding += f"Spiller {spillerListe[teller]}: Korrekt\n"
+                else:
+                    tilbakemelding += f"Spiller {spillerListe[teller]}: Feil\n"
+                teller += 1
                 
-            if spiller2Svar == rs:
-                spiller2Poeng += 1
-                print("Spiller 2: Korrekt\n")
-            else:
-                print("Spiller 2: Feil\n")
-    print(f"\nSpiller 1 poeng: {spiller1Poeng}")
-    print(f"Spiller 2 poeng: {spiller2Poeng}")
+            print(x.korrekt_svar_tekst() + "\n")
+            print(tilbakemelding)
+        
+    
+    høyestPoengsum = max(spillerPoeng)
+    vinnerIndex = spillerPoeng.index(høyestPoengsum)
+    print(f"{spillerListe[vinnerIndex]} er vinneren med {spillerPoeng[vinnerIndex]} poeng!")
