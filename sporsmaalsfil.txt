@@ -1,4 +1,4 @@
-Den delen av en datamaskin som kjører programmet kalles?: 2 :[RAM, Harddisk, CPU, Sekundærlager]
+Den delen av en datamaskin som kjører programmet kalles?: 2 : [RAM, Harddisk, CPU, Sekundærlager]
 En ___ er nok minne til å lagre en bokstav eller et lite heltall.: 1 : [bit, byte, bryter, transistor]
 En byte består av åtte ___ : 0 : [bits, instruksjoner, variabler, CPU-er]
 I hvilket tallsystem bruker man bare 0-ere eller 1-ere?: 2 : [heksadesimal, oktal, binær, desimal]
