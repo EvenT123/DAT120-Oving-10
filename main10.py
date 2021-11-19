@@ -80,4 +80,4 @@ with open("sporsmaalsfil.txt", "r", encoding="UTF8") as fil1:
     
     høyestPoengsum = max(spillerPoeng)
     vinnerIndex = spillerPoeng.index(høyestPoengsum)
-    print(f"{spillerListe[vinnerIndex]} er vinneren med {spillerPoeng[vinnerIndex]} poeng!")
+    
